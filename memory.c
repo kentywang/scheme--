@@ -118,8 +118,7 @@ void mark_to_keep(Pair *p) {
       if (curr_heap[i] == p && !keep[i]) {
         keep[i] = TRUE;
 
-        // This is icky since compound procedures are still pairs underneath.
-        // How can this be improved?
+        // Compound procedures share the pair representation.
         if (p->car.type == PAIR || p->car.type == COMPOUND_PROCEDURE)
           mark_to_keep(p->car.data.pair_ptr);
     

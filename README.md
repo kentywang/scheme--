@@ -121,15 +121,7 @@ done
 - But that only solves the memory leak issue; it doesn't address the
   freeing too much issue.
 - To solve that, I need to make sure we preserve all intermediate values so
-  they don't get freed during GC. One way to do that is before every malloc
-  we make sure to push our current work to the stack.
-- The pattern I've found useful is for each function to be responsible for
-  preserving its own intermediate values to prevent GC from taking them, 
-  but they needn't have any obligation to preserve those values once it
-  passes them to another function. It's up to the next function to
-  preserve them (if it needs them). Simultaneously, calling functions must
-  assume its called functions that involve allocating new memory will destroy
-  any data in unsaved addresses during the function execution.
+  they don't get freed during GC.
 - Using calloc is a good idea if I don't want to use memory addresses with
   random initial data.
 - For mutating an object's pointer member, I can't pass the pointer into

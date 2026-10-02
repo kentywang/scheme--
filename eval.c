@@ -67,7 +67,6 @@ Element eval_dispatch(Element exp, Element env) {
       release(3);
 
       if (procedure.type == PRIMITIVE_PROCEDURE)
-        // TODO: Does this allow null args?
         return (*procedure.data.func_ptr)(arguments);
 
       if (procedure.type == COMPOUND_PROCEDURE) {
