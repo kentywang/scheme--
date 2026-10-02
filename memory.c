@@ -64,7 +64,6 @@ Pair *get_next_free_ptr(void) {
 void gc(void) {
   // Mark addresses referenced by stack.
   for (int i = 0; i < HEAP_LIMIT; i++)
-    // TODO: n^4 time complexity, fix
     for (int j = 0; j < index_s; j++)
       if (
         stack[j].type == PAIR ||
@@ -100,7 +99,6 @@ void gc(void) {
 }
 
 void reset_deleted(void) {
-  // TODO: O(n) time, reduce to O(1) with hash table.
   AddressNode *curr = deleted;
   AddressNode *next;
 
@@ -131,7 +129,6 @@ void mark_to_keep(Pair *p) {
 }
 
 Boolean already_deleted(void *ptr) {
-  // TODO: O(n) time, reduce to O(1) with hash table.
   AddressNode *curr = deleted;
 
   while (curr != NULL) {
@@ -143,7 +140,6 @@ Boolean already_deleted(void *ptr) {
 }
 
 void add_to_deleted(void *ptr) {
-  // TODO: O(n) time, reduce to O(1) with hash table.
   AddressNode *curr = deleted;
 
   // Create first node if no nodes yet.

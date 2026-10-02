@@ -142,7 +142,7 @@ done
   around 3 weeks learning is terrifying.
 
 ### Todos
-- Improve time complexity of GC from O(n^4) to O(n) using hash tables.
+- Improve GC performance under allocation pressure.
 - Add more primitives and other usual language features.
 - Flesh out verbose mode.
 
